@@ -861,7 +861,7 @@ impl LedgerState {
 
     /// Get all abars with sid which are associated with a diversified public key
     #[allow(dead_code)]
-    fn get_owned_abars(
+    pub fn get_owned_abars(
         &self,
         addr: &AXfrPubKey,
     ) -> Vec<(ATxoSID, AnonBlindAssetRecord)> {
@@ -875,7 +875,7 @@ impl LedgerState {
 
     /// Get the owner memo of a abar by ATxoSID
     #[allow(dead_code)]
-    fn get_abar_memo(&self, ax_id: ATxoSID) -> Option<Vec<Memo>> {
+    pub fn get_abar_memo(&self, ax_id: ATxoSID) -> Option<Vec<Memo>> {
         let txn_location = self.status.ax_txo_to_txn_location.get(&ax_id).unwrap();
         let authenticated_txn = self.get_transaction(txn_location.0).unwrap();
         let memo = authenticated_txn.finalized_txn.txn.body.memos;
