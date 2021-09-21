@@ -875,7 +875,7 @@ impl LedgerState {
 
     /// Get the owner memo of a abar by ATxoSID
     #[allow(dead_code)]
-    fn get_abar_memo(&self, ax_id: ATxoSID) -> Option<OwnerMemo> {
+    pub fn get_abar_memo(&self, ax_id: ATxoSID) -> Option<OwnerMemo> {
         let txn_location = self.status.ax_txo_to_txn_location.get(&ax_id).unwrap();
         let authenticated_txn = self.get_transaction(txn_location.0).unwrap();
         let memo: Vec<OwnerMemo> = authenticated_txn
